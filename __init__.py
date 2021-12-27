@@ -91,6 +91,7 @@ if __name__ == "__main__":
             # download mp3-file, and store it into temporary file
             urllib.request.urlretrieve(trackUrl, tmpFileName)	
             # then rename file and move it to final directory
+            os.close(fd)
             shutil.move(tmpFileName, finalFileName)
 
             writeToCache(curAlbum, curTrack)
