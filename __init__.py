@@ -84,7 +84,11 @@ if __name__ == "__main__":
             fd, tmpFileName = tempfile.mkstemp()
 
             trackUrl = track['stems']['full']['lqMp3Url']
-            trackAuthor = track['creatives']['mainArtists'][0]['name']
+            if len( track['creatives']['mainArtists'] ) == 0:
+                trackAuthor = 'Unknown'
+            else:
+                trackAuthor = track['creatives']['mainArtists'][0]['name']
+                
             trackName = removeUnsupportedSymbols(track['title'])           
             finalFileName = '{}/{}/{} - {}.mp3'.format(os.getcwd(), folderName, trackAuthor, trackName)
 
